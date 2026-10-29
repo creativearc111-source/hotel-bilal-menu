@@ -286,6 +286,13 @@ a.pill:hover{border-color:var(--line-strong);background:rgba(255,200,55,.07)}
   background:radial-gradient(circle at 35% 30%,#2E384D,#121722 70%);
   box-shadow:inset 0 0 0 1px rgba(255,200,55,.38),inset 0 0 0 5px rgba(10,13,20,.6),inset 0 0 0 6px rgba(255,200,55,.14),0 10px 24px -10px rgba(0,0,0,.9),0 0 34px -12px rgba(255,200,55,.45)}
 .medal span{filter:drop-shadow(0 6px 8px rgba(0,0,0,.5))}
+.medal.has-photo{width:76px;height:76px}
+.medal.has-photo img,.spec-plate.has-photo img{display:block;border-radius:50%;object-fit:cover;background:#121722}
+.medal.has-photo img{width:calc(100% - 12px);height:calc(100% - 12px)}
+.spec-plate.has-photo{width:116px;height:116px}
+.spec-plate.has-photo img{width:calc(100% - 16px);height:calc(100% - 16px);transition:transform .5s var(--ease)}
+@media (hover:hover){.spec:hover .spec-plate.has-photo img{transform:scale(1.05)}}
+.footer-addr{white-space:pre-line}
 .sec-titles{min-width:0;flex:1}
 .sec-index{font-family:var(--font-brand);font-size:11px;font-weight:700;letter-spacing:.24em;color:var(--gold)}
 .sec-title{margin:2px 0 0;font-family:var(--font-display);font-weight:600;font-size:clamp(1.55rem,6.6vw,2.15rem);line-height:1.08;color:var(--cream)}
@@ -698,7 +705,7 @@ a.pill:hover{border-color:var(--line-strong);background:rgba(255,200,55,.07)}
 const CONFIG = {
   name: 'Hotel Bilal',
   locality: "Triplicane, Chennai",
-  address: "Hotel Bilal, 47/97, CNK Road, SVM Nagar, Police Quarters, Triplicane, Chennai 600005",
+  address: "Hotel Bilal\n47/97, CNK Road, SVM Nagar, Police Quarters\nTriplicane, Chennai 600005",
   phone: "+917708683467",             // used for tel: links
   phoneDisplay: "+91 77086 83467",
   whatsapp: "917708683467",           // wa.me format: country code, no plus
@@ -737,7 +744,7 @@ const CHAPTERS = {
 };
 
 const SECTIONS = [
-  { id: "soups", name: "Soups", icon: "🍲", chapter: "kitchen", kw: "soup", tagline: "Slow-simmered broths, rich and warming.", items: [
+  { id: "soups", name: "Soups", icon: "🍲", chapter: "kitchen", kw: "soup", tagline: "Slow-simmered broths, rich and warming.", photo: "img/soups.jpg", items: [
     ["Hot & Sour Soup",120,null],
     ["Cream of Mushroom / Tomatto Soup",130,true,{"kw":"Cream of Mushroom / Tomato Soup    tomato"}],
     ["Veg Clear Soup",90,true],
@@ -745,7 +752,7 @@ const SECTIONS = [
     ["Pepper Chicken",130,false,{"kw":"Pepper Chicken Soup"}],
     ["Pepper Mutton",150,false,{"kw":"Pepper Mutton Soup"}],
     ["Sea Food",150,false,{"kw":"Seafood Soup seafood"}],
-    ["Mutton Nali Soup",220,false,{"badge":"must","emoji":"🍲","rank":7,"kw":"Mutton Nalli Soup  nalli"}],
+    ["Mutton Nali Soup",220,false,{"badge":"must","emoji":"🍲","rank":7,"kw":"Mutton Nalli Soup  nalli","photo":"img/special-mutton-nali-soup.jpg"}],
     ["Paya Soup",160,false],
     ["Crab Soup",160,false],
     ["Sweet Corn / Veg Soup",120,true,{"kw":"Sweet Corn / Manchow Soup"}],
@@ -753,7 +760,7 @@ const SECTIONS = [
     ["Chicken Soup",150,false],
     ["Mutton Soup",180,false],
   ] },
-  { id: "quick-bites", name: "Quick Bites", icon: "🌯", chapter: "kitchen", kw: "snack snacks roll rolls wrap", tagline: "Shawarma, rolls and crispy bites.", items: [
+  { id: "quick-bites", name: "Quick Bites", icon: "🌯", chapter: "kitchen", kw: "snack snacks roll rolls wrap", tagline: "Shawarma, rolls and crispy bites.", photo: "img/quick-bites.jpg", items: [
     ["Shawarma Roll",100,false],
     ["Shawarma Plate",160,false],
     ["Mexican Shawarma Roll",120,false],
@@ -772,23 +779,23 @@ const SECTIONS = [
     ["Fish Finger",270,false],
     ["French Fries",120,true],
   ] },
-  { id: "salad", name: "Salad", icon: "🥗", chapter: "kitchen", kw: "salads", tagline: "Fresh, crisp and light.", items: [
+  { id: "salad", name: "Salad", icon: "🥗", chapter: "kitchen", kw: "salads", tagline: "Fresh, crisp and light.", photo: "img/salad.jpg", items: [
     ["Green Salad",80,true],
     ["Finger Salad",120,true],
     ["Onion Salad",60,true],
     ["Chicken Salad",180,false],
     ["Hawaiian Chicken Cheese Salad",300,false],
   ] },
-  { id: "tawa-kabab", name: "Tawa Kabab", icon: "🍳", chapter: "kitchen", kw: "tawa kebab kabab fry", tagline: "Seared on the iron tawa.", items: [
+  { id: "tawa-kabab", name: "Tawa Kabab", icon: "🍳", chapter: "kitchen", kw: "tawa kebab kabab fry", tagline: "Seared on the iron tawa.", photo: "img/tawa-kabab.jpg", items: [
     ["Vanjaram Fry","Seasonal",false,{"kw":"seer fish"}],
-    ["Mutton Raan",1600,false,{"badge":"must","emoji":"🍖","rank":4,"kw":"leg"}],
+    ["Mutton Raan",1600,false,{"badge":"must","emoji":"🍖","rank":4,"kw":"leg","photo":"img/special-mutton-raan.jpg"}],
     ["Chicken Chapli Kabab",250,false],
     ["Mutton Galouti Kabab",320,false],
     ["Fish Tawa Fry","Seasonal",false],
   ] },
-  { id: "appetizers", name: "Appetizers", icon: "🍗", chapter: "kitchen", kw: "grill grills grilled bbq barbeque arabian alfaham faham", tagline: "Arabian grills by the full, half or quarter.", items: [
+  { id: "appetizers", name: "Appetizers", icon: "🍗", chapter: "kitchen", kw: "grill grills grilled bbq barbeque arabian alfaham faham", tagline: "Arabian grills by the full, half or quarter.", photo: "img/appetizers.jpg", items: [
     ["Barbeque Chicken",[480,250,130],false],
-    ["AlFaham Dajaj",[480,250,130],false,{"badge":"must","emoji":"🍗","rank":3,"kw":"Al Faham Dajaj al faham"}],
+    ["AlFaham Dajaj",[480,250,130],false,{"badge":"must","emoji":"🍗","rank":3,"kw":"Al Faham Dajaj al faham","photo":"img/special-al-faham-dajaj.jpg"}],
     ["Pepper BBQ",[500,270,140],false],
     ["Afghani Dajaj",[520,290,150],false],
     ["Morocon BBQ",[550,300,160],false,{"kw":"Moroccan BBQ moroccan"}],
@@ -798,7 +805,7 @@ const SECTIONS = [
     ["Spicy Grill Chicken",[550,300],false],
     ["Masala Grill Chicken",[570,320],false],
   ] },
-  { id: "chinese", name: "Chinese", icon: "🥢", chapter: "kitchen", kw: "indo chinese starter", tagline: "Wok-tossed Indo-Chinese favourites.", items: [
+  { id: "chinese", name: "Chinese", icon: "🥢", chapter: "kitchen", kw: "indo chinese starter", tagline: "Wok-tossed Indo-Chinese favourites.", photo: "img/chinese.jpg", items: [
     ["Dragon Chicken / Mutton / Fish / Prawn",[["Dragon Chicken",270],["Mutton",350],["Fish",280],["Prawn",290]],false],
     ["Chicken Lollipop",240,false],
     ["Chilli Chicken / Mutton",[["Chilli Chicken",230],["Mutton",230]],false],
@@ -808,7 +815,7 @@ const SECTIONS = [
     ["Dynamite Chicken",370,false],
     ["Shezwan Chicken / Mutton",[["Shezwan Chicken",240],["Mutton",360]],false,{"kw":"Schezwan Chicken / Mutton"}],
     ["Red Chilli Chicken / Mutton",[["Red Chilli Chicken",260],["Mutton",360]],false],
-    ["Bilal Spl Lollipop",320,false,{"badge":"sig","emoji":"🍗","rank":6,"kw":"special"}],
+    ["Bilal Spl Lollipop",320,false,{"badge":"sig","emoji":"🍗","rank":6,"kw":"special","photo":"img/special-bilal-spl-lollipop.jpg"}],
     ["Lemon Chicken",250,false],
     ["Manchurian Fish / Prawn",[["Manchurian Fish",270],["Prawn",280]],false],
     ["Butter Garlic Prawn",320,false],
@@ -816,12 +823,12 @@ const SECTIONS = [
     ["Chilli Gobi",170,true],
     ["Baby Corn Salt & Pepper",180,true],
   ] },
-  { id: "tandoori", name: "Tandoori & Kababs", icon: "🍢", chapter: "kitchen", kw: "tandoor kabab kebab tikka", tagline: "Fired in the clay tandoor.", items: [
+  { id: "tandoori", name: "Tandoori & Kababs", icon: "🍢", chapter: "kitchen", kw: "tandoor kabab kebab tikka", tagline: "Fired in the clay tandoor.", photo: "img/tandoori.jpg", items: [
     ["Veg Sizzler",499,true],
     ["Non - Veg Sizzler",699,false],
     ["Tandoori Fruit Chat",250,true,{"kw":"Tandoori Fruit Chaat   chaat"}],
     ["Tandoori Chicken",[450,240],false],
-    ["Bilal Spl Tandoori Chicken",[550,300],false,{"badge":"sig","emoji":"🍗","rank":2,"kw":"special"}],
+    ["Bilal Spl Tandoori Chicken",[550,300],false,{"badge":"sig","emoji":"🍗","rank":2,"kw":"special","photo":"img/special-bilal-spl-tandoori-chicken.jpg"}],
     ["Honey Tandoori",[550,300],false],
     ["Masala Tandoori",[560,320],false],
     ["Chicken Kali Mirch Kabab",290,false],
@@ -853,7 +860,7 @@ const SECTIONS = [
     ["Baby Corn Malai Kabab",220,true],
     ["Mushroom Stuffing",230,true],
   ] },
-  { id: "starters", name: "Starter", icon: "🍤", chapter: "kitchen", kw: "starter fry fried", tagline: "65s, pepper fries and crispy favourites.", items: [
+  { id: "starters", name: "Starter", icon: "🍤", chapter: "kitchen", kw: "starter fry fried", tagline: "65s, pepper fries and crispy favourites.", photo: "img/starters.jpg", items: [
     ["Kaadai 65",150,false,{"kw":"quail"}],
     ["Chicken 65",180,false],
     ["Prawn 65",250,false],
@@ -877,7 +884,7 @@ const SECTIONS = [
     ["Prawn Pepper Fry",320,false],
     ["Crab Pepper Fry",290,false],
   ] },
-  { id: "indian", name: "Indian", icon: "🥘", chapter: "kitchen", kw: "curry curries gravy masala", tagline: "Curries and masalas from across India.", items: [
+  { id: "indian", name: "Indian", icon: "🥘", chapter: "kitchen", kw: "curry curries gravy masala", tagline: "Curries and masalas from across India.", photo: "img/indian.jpg", items: [
     ["Mutton Pepper Paya",280,false],
     ["Mutton Masala",320,false],
     ["Butter Mutton Masala",370,false],
@@ -928,7 +935,7 @@ const SECTIONS = [
     ["Egg Masala",120,false],
     ["Egg Curry",110,false],
   ] },
-  { id: "bread", name: "Bread", icon: "🫓", chapter: "kitchen", kw: "naan roti parotta paratha kulcha kothu bread", tagline: "Naan, roti, parotta and kothu.", items: [
+  { id: "bread", name: "Bread", icon: "🫓", chapter: "kitchen", kw: "naan roti parotta paratha kulcha kothu bread", tagline: "Naan, roti, parotta and kothu.", photo: "img/bread.jpg", items: [
     ["Plain Naan",30,true],
     ["Butter Naan",50,true],
     ["Garlic Naan",60,true],
@@ -955,8 +962,8 @@ const SECTIONS = [
     ["Idiyappam Chicken Kotthu",200,false,{"kw":"Idiyappam Chicken Kothu   kothu"}],
     ["Idiyappam Egg Kotthu",180,false,{"kw":"Idiyappam Egg Kothu   kothu"}],
   ] },
-  { id: "biryani", name: "Biryani & Rice", icon: "🍛", chapter: "kitchen", kw: "biriyani rice", tagline: "Our biryanis and everyday rice.", items: [
-    ["Nalli Biryani",550,false,{"badge":"must","emoji":"🍖","rank":1,"kw":"mutton marrow"}],
+  { id: "biryani", name: "Biryani & Rice", icon: "🍛", chapter: "kitchen", kw: "biriyani rice", tagline: "Our biryanis and everyday rice.", photo: "img/biryani.jpg", items: [
+    ["Nalli Biryani",550,false,{"badge":"must","emoji":"🍖","rank":1,"kw":"mutton marrow","photo":"img/special-nalli-biryani.jpg"}],
     ["Chicken Biryani",200,false],
     ["Mutton Biryani",300,false],
     ["Egg Biryani",150,false],
@@ -969,13 +976,13 @@ const SECTIONS = [
     ["Steam Rice",100,true,{"kw":"fried rice"}],
     ["Curd Rice",100,true,{"kw":"fried rice"}],
   ] },
-  { id: "mandi", name: "Mandi", icon: "🍖", chapter: "kitchen", kw: "arabian rice", tagline: "Arabian-style rice platters.", items: [
+  { id: "mandi", name: "Mandi", icon: "🍖", chapter: "kitchen", kw: "arabian rice", tagline: "Arabian-style rice platters.", photo: "img/mandi.jpg", items: [
     ["Chicken Mandi",300,false],
     ["Chicken Faham Mandi",370,false,{"kw":"alfaham"}],
     ["Mutton Mandi",450,false],
-    ["Laham Mandi",510,false,{"badge":"must","emoji":"🥘","rank":5,"kw":"mutton lamb"}],
+    ["Laham Mandi",510,false,{"badge":"must","emoji":"🥘","rank":5,"kw":"mutton lamb","photo":"img/special-laham-mandi.jpg"}],
   ] },
-  { id: "fried-rice", name: "Fried Rice", icon: "🍚", chapter: "kitchen", kw: "rice chinese", tagline: "Classic, or fiery Schezwan.", items: [
+  { id: "fried-rice", name: "Fried Rice", icon: "🍚", chapter: "kitchen", kw: "rice chinese", tagline: "Classic, or fiery Schezwan.", photo: "img/fried-rice.jpg", items: [
     ["Veg Rice / Schezwan",[["Veg Rice",150],["Schezwan",180]],true,{"kw":"Veg Fried Rice  fried rice"}],
     ["Panneer Rice / Schezwan",[["Panneer Rice",180],["Schezwan",220]],true,{"kw":"Paneer Fried Rice paneer fried rice"}],
     ["Mushroom Rice / Schezwan",[["Mushroom Rice",180],["Schezwan",220]],true,{"kw":"Mushroom Fried Rice  fried rice"}],
@@ -987,7 +994,7 @@ const SECTIONS = [
     ["Shanghai Fried Rice",350,null,{"kw":"fried rice"}],
     ["Singapore Fried Rice",280,null,{"kw":"fried rice"}],
   ] },
-  { id: "noodles", name: "Noodles", icon: "🍜", chapter: "kitchen", kw: "noodle chinese", tagline: "Classic, or fiery Schezwan.", items: [
+  { id: "noodles", name: "Noodles", icon: "🍜", chapter: "kitchen", kw: "noodle chinese", tagline: "Classic, or fiery Schezwan.", photo: "img/noodles.jpg", items: [
     ["Veg Noodles / Schezwan",[["Veg Noodles",150],["Schezwan",180]],true,{"kw":"Veg Noodles"}],
     ["Egg Noodles / Schezwan",[["Egg Noodles",160],["Schezwan",180]],false,{"kw":"Egg Noodles"}],
     ["Chicken Noodles / Schezwan",[["Chicken Noodles",200],["Schezwan",220]],false,{"kw":"Chicken Noodles"}],
@@ -1225,7 +1232,7 @@ function sectionHTML(sec) {
   return `
     <section class="section reveal" id="sec-${sec.id}" data-cat="${sec.id}" data-icon="${sec.icon}" aria-labelledby="h-${sec.id}">
       <div class="sec-head">
-        <div class="medal" aria-hidden="true"><span>${sec.icon}</span></div>
+        <div class="medal${sec.photo ? ' has-photo' : ''}" aria-hidden="true">${sec.photo ? `<img src="${sec.photo}" alt="" width="120" height="120" loading="lazy" decoding="async">` : `<span>${sec.icon}</span>`}</div>
         <div class="sec-titles">
           <span class="sec-index">${String(sec.index + 1).padStart(2, '0')} / ${total}</span>
           <h2 class="sec-title" id="h-${sec.id}">${esc(sec.name)}</h2>
@@ -1266,7 +1273,7 @@ function renderRail() {
     const price = typeof it.price === 'number' ? fmt(it.price) : `<small>from</small>${fmt(lowestPrice(it))}`;
     return `
       <button type="button" class="spec${it.badge === 'sig' ? ' sig' : ''}" data-goto="${it.id}" aria-label="${esc(it.name)}, ${esc(it.sec.name)}. Show in menu">
-        <span class="spec-plate" aria-hidden="true"><span>${it.emoji || it.sec.icon}</span></span>
+        <span class="spec-plate${it.photo ? ' has-photo' : ''}" aria-hidden="true">${it.photo ? `<img src="${it.photo}" alt="" width="200" height="200" decoding="async">` : `<span>${it.emoji || it.sec.icon}</span>`}</span>
         ${it.badge === 'sig' ? '<span class="badge sig">★ Chef’s Signature</span>' : '<span class="badge must">Must Try</span>'}
         <span class="spec-name">${esc(it.name)}</span>
         <span class="spec-meta">${esc(it.sec.name)}</span>
